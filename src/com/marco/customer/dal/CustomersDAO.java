@@ -93,7 +93,7 @@ public class CustomersDAO implements IBaseDAO<Customers,Integer>{
 	public Customers findById(java.lang.Integer id) {
 		log.debug("getting Customers instance with id: " + id);
 		try {
-			Customers instance = (Customers) sessionFactory.getCurrentSession().get("com.marco.customer.Customers", id);
+			Customers instance = (Customers) sessionFactory.getCurrentSession().get("com.marco.customer.dal.Customers", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -110,7 +110,7 @@ public class CustomersDAO implements IBaseDAO<Customers,Integer>{
 	public List<Customers> findByExample(Customers instance) {
 		log.debug("finding Customers instance by example");
 		try {
-			List<Customers> results = (List<Customers>)sessionFactory.getCurrentSession().createCriteria("com.marco.customer.Customers")
+			List<Customers> results = (List<Customers>)sessionFactory.getCurrentSession().createCriteria("com.marco.customer.dal.Customers")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
